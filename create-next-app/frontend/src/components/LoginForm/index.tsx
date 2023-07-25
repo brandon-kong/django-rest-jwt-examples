@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { login } from '@/lib/AuthFunctions';
+import { login, register } from '@/lib/AuthFunctions';
 
 export default function LoginForm() {
     const [email, setEmail] = useState<string>('');
@@ -9,7 +9,7 @@ export default function LoginForm() {
 
     const handleLogin = async (e: any) => {
         e.preventDefault();
-        const res = await login( email, password );
+        const res = await register( email, password );
     }
 
     return (

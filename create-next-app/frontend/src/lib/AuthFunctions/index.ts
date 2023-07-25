@@ -13,7 +13,7 @@ export const login = async (email: string, password: string) => {
 
 export const register = async (email: string, password: string) => {
     try {
-        const res = await axios.post('users/create/email', { email, password });
+        const res = await axios.post('users/register', { email, password });
         return res.data;
     } catch (err) {
         throw new Error('Could not register');
