@@ -202,7 +202,17 @@ EMAIL_USE_SSL = False
 SEND_PHONE_VERIFICATION = False
 PHONE_VERIFICATION_TOKEN_LIFETIME = timedelta(minutes=15)
 
-SEND_EMAIL_VERIFICATION = True
+SEND_EMAIL_VERIFICATION = False
 EMAIL_VERIFICATION_TOKEN_LIFETIME = timedelta(minutes=15)
 
 BACKEND_URL = env('BACKEND_URL', default='http://localhost:8000')
+
+# CORS
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'http://localhost:8080',
+)
