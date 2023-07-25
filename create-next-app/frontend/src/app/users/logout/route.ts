@@ -4,7 +4,7 @@ import { cookies } from 'next/headers'
 
 export async function POST(req: Request) {
     const data = await req.json();
-    console.log(data.data)
+    //console.log(data.data)
 
     try {
         const res = await axios.post('http://127.0.0.1:8000/users/create/email',{
