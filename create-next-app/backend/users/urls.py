@@ -13,11 +13,13 @@ from .views import (
     VerifyWithOTPView,
     VerifyWithEmailView,
     LogoutView,
+    UserSessionView,
 )
 
 urlpatterns = [
     path('', HelloView.as_view(), name='index'),
     path('protected', ProtectedView.as_view(), name='protected'),
+    path('session', UserSessionView.as_view(), name='user_session'),
 
     path('token/blacklist', LogoutView.as_view(), name='user_logout'),
     path('token/refresh', TokenRefreshView.as_view(), name='token_refresh'),

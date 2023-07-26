@@ -1,14 +1,12 @@
 import ax from 'axios';
 
 const axios = ax.create({
-    baseURL: process.env.API_URL,
-    headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    }
+    baseURL: 'http://localhost:8000/',
+})
+
+const localAxios = ax.create({
+    baseURL: 'http://localhost:3000/api/',
 })
 
 export default axios;
+export { localAxios };

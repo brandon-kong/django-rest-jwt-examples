@@ -501,3 +501,24 @@ class LogoutView(APIView):
                     "message": "Invalid token!"
                 }
             })
+        
+class UserSessionView(APIView):
+    permission_classes = [IsAuthenticated,]
+
+    def get(self, request):
+        user = request.user
+
+        return generate_success_response ({
+            "status_code": 200,
+            "detail": {
+                "user": {
+                    "id": user.id,
+                    "email": user.email,
+                    "phone": user.phone,
+                    "email_verified": user.email_verified,
+                    "phone_verified": user.phone_verified,
+                    "email_verified_at": user.email_verified_at,
+                    "phone_verified_at": user.phone_verified_at,
+                }
+            }
+        })
