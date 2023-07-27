@@ -1,27 +1,14 @@
 import { getServerSession } from "next-auth/next";
 import authOptions from "@/pages/api/auth/[...nextauth]";
+import  type { Session as SessionType } from "next-auth";
 
 export const getSession = async () => {
-  return await getServerSession(authOptions);
+  return await getServerSession(authOptions as any);
 };
 
 export const getCurrentUser = async () => {
-  const session = await getSession();
+  const session = await getSession() as SessionType;
+
+  console.log(session?.user)
   return session?.user;
-};
-
-export const isAdmin = async (userId?: string) => {
-  if (!userId) return false;
-
-  const { userType } =
-    (await db.user.findFirst({
-      where: {
-        id: userId,
-      },
-      select: {
-        userType: true,
-      },
-    })) || {};
-
-  return userType === UserType.Admin;
 };

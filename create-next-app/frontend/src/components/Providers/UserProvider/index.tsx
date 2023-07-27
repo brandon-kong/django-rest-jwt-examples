@@ -6,12 +6,10 @@ import { UserSession } from "@/types/types";
 interface UserContextValues {
   user: UserSession;
   setUser: (user: UserSession) => void;
-  isAdmin: boolean;
 }
 export const UserContext = createContext<UserContextValues>({
   user: undefined,
   setUser: () => {},
-  isAdmin: false,
 });
 
 export const useUserContext = () => useContext(UserContext);
@@ -19,13 +17,11 @@ export const useUserContext = () => useContext(UserContext);
 interface UserContextProviderProps {
   children: React.ReactNode;
   user: UserSession;
-  isAdmin: boolean;
 }
 
 const UserContextProvider = ({
   children,
   user,
-  isAdmin,
 }: UserContextProviderProps) => {
   const [userSession, setUserSession] = useState<UserSession>(user);
 
@@ -34,7 +30,6 @@ const UserContextProvider = ({
       value={{
         user: userSession,
         setUser: setUserSession,
-        isAdmin,
       }}
     >
       {children}

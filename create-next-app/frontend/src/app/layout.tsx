@@ -1,7 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Providers from '@/components/Providers/UserProvider';
+import UserContextProvider from '@/components/Providers/UserProvider'
+import { getCurrentUser } from '@/lib/session'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,11 +17,15 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
 
-  //const session = await getServerSession(authOptions)
+  const user = await getCurrentUser()
+
   return (
     <html lang="en">
       <body className={inter.className}>
+        <UserContextProvider user={user}>
           {children}
+        </UserContextProvider>
+          
   
         
         </body>
