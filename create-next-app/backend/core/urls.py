@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
     re_path(r'^users/', include('users.urls')),
+    re_path(r'^accounts/', include('allauth.urls'), name='socialaccount_signup'),
 ]

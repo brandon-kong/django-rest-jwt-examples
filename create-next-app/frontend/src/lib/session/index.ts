@@ -8,7 +8,5 @@ export const getSession = async () => {
 
 export const getCurrentUser = async () => {
   const session = await getSession() as SessionType;
-
-  console.log(session?.user)
   return session?.user;
 };
