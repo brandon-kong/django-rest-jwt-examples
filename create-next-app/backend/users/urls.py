@@ -14,6 +14,7 @@ from .views import (
     VerifyWithEmailView,
     LogoutView,
     UserSessionView,
+    GoogleLoginView
 )
 
 urlpatterns = [
@@ -31,4 +32,6 @@ urlpatterns = [
 
     path('verify/otp', VerifyWithOTPView.as_view(), name='verify_with_otp'),
     path('verify/email/<str:token>', VerifyWithEmailView.as_view(), name='verify_with_email'),
+
+    path('oauth/google', GoogleLoginView.as_view(), name='google_login'),
 ]
